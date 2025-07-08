@@ -5,19 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crypto Game Shop</title>
   <style>
+    @keyframes gradientBackground {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
     body {
-      background-color: #0a0a0a;
-      color: #00ffcc;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
       margin: 0;
       padding: 0;
-      animation: fadeIn 1.5s ease-in;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      text-align: center;
+      background: linear-gradient(270deg, #00ffa3, #dc1fff, #00d9ff);
+      background-size: 600% 600%;
+      animation: gradientBackground 15s ease infinite;
     }
 
     h1 {
       font-size: 2.5rem;
-      margin-top: 30px;
+      margin-top: 40px;
+      color: #ffffff;
+      text-shadow: 0 0 15px #00ffa3;
       animation: glow 2s infinite alternate;
     }
 
@@ -30,58 +45,66 @@
     }
 
     .box {
-      border: 2px solid #00ffcc;
+      background-color: rgba(0, 0, 0, 0.4);
+      border: 2px solid #00ffa3;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       width: 90%;
-      max-width: 400px;
-      background-color: rgba(0, 255, 204, 0.05);
+      max-width: 420px;
+      backdrop-filter: blur(6px);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .box:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0 15px #00ffcc;
+      box-shadow: 0 0 20px #00ffa3;
     }
 
     .emoji {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-right: 8px;
     }
 
     footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #ff6666;
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 5px #00ffcc;
-      }
-      to {
-        text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc;
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      margin: 50px 20px 30px;
+      font-size: 0.95rem;
+      color: #ffffff;
+      line-height: 1.6;
     }
 
     a {
-      color: #00ffcc;
+      color: #00ffd5;
       text-decoration: none;
     }
 
     a:hover {
       text-decoration: underline;
+    }
+
+    img.tether-logo {
+      vertical-align: middle;
+      width: 18px;
+      height: 18px;
+      margin-right: 6px;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 8px #00ffa3;
+      }
+      to {
+        text-shadow: 0 0 20px #00ffa3, 0 0 30px #00ffd5;
+      }
+    }
+
+    code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 3px 6px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 8px;
+      font-family: monospace;
+      font-size: 0.95rem;
     }
   </style>
 </head>
@@ -101,7 +124,8 @@
 
     <div class="box">
       <span class="emoji">💸</span><strong>Accepted Payments</strong><br><br>
-      <span class="emoji">🪙</span> USDT on Solana<br>
+      <img src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=029" alt="Tether" class="tether-logo">
+      USDT on Solana<br>
       <code>N8UivXNHnDyRhQqH4NZduKKva4LSYDQam4PfGixctXC</code>
     </div>
 
@@ -113,7 +137,8 @@
   </div>
 
   <footer>
-    ⚠️ Each key is one-time use. Sent manually after payment. No refunds.
+    <strong>IMPORTANT:</strong> Make sure offline mode on Steam is enabled before starting the game.<br><br>
+    After sending USDT to SOL address, send the transaction hash and the product you want to buy on Telegram <strong>@ms4nc</strong>, you will receive a Steam login and password and a Steam Guard code.
   </footer>
 </body>
 </html>
