@@ -12,6 +12,16 @@
       font-weight: 200;
     }
 
+    body {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: linear-gradient(270deg, #00ffa3, #dc1fff, #00d9ff);
+      background-size: 600% 600%;
+      animation: gradientBackground 15s ease infinite;
+      color: #fff;
+    }
+
     @keyframes gradientBackground {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -23,21 +33,9 @@
       100% { background-position: 500px 0; }
     }
 
-    body {
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      background: linear-gradient(270deg, #00ffa3, #dc1fff, #00d9ff);
-      background-size: 600% 600%;
-      animation: gradientBackground 15s ease infinite;
-      color: #fff;
-    }
-
     h1 {
       font-size: 3rem;
       margin-top: 40px;
-      position: relative;
-      display: inline-block;
       background: linear-gradient(120deg, #eee, #ccc, #eee);
       background-size: 200% auto;
       color: #fff;
@@ -57,24 +55,54 @@
     }
 
     .box {
+      position: relative;
       background-color: rgba(0, 0, 0, 0.4);
-      border: 2px solid #00ffa3;
-      padding: 20px;
       border-radius: 12px;
+      padding: 20px;
       width: 90%;
       max-width: 440px;
+      overflow: hidden;
+      z-index: 1;
       backdrop-filter: blur(6px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
-    .box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px #00ffa3;
+    .box::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, #ffffff, #b36eff);
+      z-index: -1;
+      border-radius: 14px;
+      animation: borderMove 5s linear infinite;
+      background-size: 400%;
     }
 
-    .emoji {
-      font-size: 1.4rem;
-      margin-right: 8px;
+    @keyframes borderMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .box:hover::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -75%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+      transform: rotate(25deg);
+      animation: shineDiagonal 1s ease-out forwards;
+      z-index: 2;
+    }
+
+    @keyframes shineDiagonal {
+      from { left: -75%; top: -50%; }
+      to { left: 100%; top: 100%; }
     }
 
     footer {
@@ -144,21 +172,21 @@
   </style>
 </head>
 <body>
-  <h1>💥 Crypto Game Shop 💥</h1>
+  <h1>Crypto Game Shop</h1>
 
   <div class="container">
     <div class="box">
-      🎮 <strong>The Last of Us Part II (Steam)</strong><br>
+      <strong>The Last of Us Part II (Steam)</strong><br>
       Price: 12 USDT
     </div>
 
     <div class="box">
-      🎮 <strong>Outlast Trials (Steam)</strong><br>
+      <strong>Outlast Trials (Steam)</strong><br>
       Price: 10 USDT
     </div>
 
     <div class="box">
-      <span class="emoji">💸</span><strong>Accepted Payments</strong><br><br>
+      <strong>Accepted Payments</strong><br><br>
       <img src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=029" alt="Tether" class="tether-logo">
       USDT on Solana
       <div class="copy-container">
@@ -168,7 +196,7 @@
     </div>
 
     <div class="box">
-      <span class="emoji">📩</span><strong>Contact</strong><br>
+      <strong>Contact</strong><br>
       Telegram: <a href="https://t.me/ms4nc" target="_blank">@ms4nc</a><br><br>
       After payment, send transaction hash + game name.
     </div>
