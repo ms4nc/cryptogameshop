@@ -1,65 +1,119 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crypto Game Shop</title>
   <style>
     body {
-      background-color: #0d0d0d;
+      background-color: #0a0a0a;
       color: #00ffcc;
       font-family: 'Arial', sans-serif;
       text-align: center;
-      padding: 40px;
+      margin: 0;
+      padding: 0;
+      animation: fadeIn 1.5s ease-in;
     }
+
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 30px;
+      font-size: 2.5rem;
+      margin-top: 30px;
+      animation: glow 2s infinite alternate;
     }
-    .card {
-      background: #1a1a1a;
-      border: 1px solid #00ffcc;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .box {
+      border: 2px solid #00ffcc;
       padding: 20px;
-      margin: 20px auto;
-      width: 300px;
       border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      background-color: rgba(0, 255, 204, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    code {
-      background-color: #222;
-      padding: 2px 4px;
-      border-radius: 4px;
-      font-size: 0.9em;
+
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #00ffcc;
     }
+
+    .emoji {
+      font-size: 1.5rem;
+      margin-right: 8px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #ff6666;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #00ffcc;
+      }
+      to {
+        text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     a {
       color: #00ffcc;
       text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <h1>💥 Crypto Game Shop 💥</h1>
 
-  <div class="card">
-    <h2>🎮 The Last of Us Part II (Steam)</h2>
-    <p>Cena: 12 USDT</p>
+  <div class="container">
+    <div class="box">
+      🎮 <strong>The Last of Us Part II (Steam)</strong><br>
+      Price: 12 USDT
+    </div>
+
+    <div class="box">
+      🎮 <strong>Outlast Trials (Steam)</strong><br>
+      Price: 10 USDT
+    </div>
+
+    <div class="box">
+      <span class="emoji">💸</span><strong>Accepted Payments</strong><br><br>
+      <span class="emoji">🪙</span> USDT on Solana<br>
+      <code>N8UivXNHnDyRhQqH4NZduKKva4LSYDQam4PfGixctXC</code>
+    </div>
+
+    <div class="box">
+      <span class="emoji">📩</span><strong>Contact</strong><br>
+      Telegram: <a href="https://t.me/ms4nc" target="_blank">@ms4nc</a><br><br>
+      After payment, send transaction hash + game name.
+    </div>
   </div>
 
-  <div class="card">
-    <h2>🎮 Outlast Trials (Steam)</h2>
-    <p>Cena: 10 USDT</p>
-  </div>
-
-  <div class="card">
-    <h2>💸 Akceptowane płatności</h2>
-    <p>💰 <b>SOL:</b> <code>73Y8BAtazv21YskpJdC4WDXTdbr5tEpk1btSEuyAibfi</code></p>
-  </div>
-
-  <div class="card">
-    <h2>📩 Kontakt</h2>
-    <p>Telegram: <a href="https://t.me/ms4nc">@ms4nc</a></p>
-    <p>Po płatności wyślij hash transakcji + nazwę gry.</p>
-  </div>
-
-  <p style="margin-top: 40px; font-size: 0.8em;">⚠️ Konta są jednorazowe, wysyłane ręcznie po płatności. Brak zwrotów.</p>
+  <footer>
+    ⚠️ Each key is one-time use. Sent manually after payment. No refunds.
+  </footer>
 </body>
 </html>
