@@ -2,38 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Crypto Game Shop</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:ital,wght@0,200&display=swap');
+
+    * {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 200;
+    }
+
     @keyframes gradientBackground {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes shine {
+      0% { background-position: -500px 0; }
+      100% { background-position: 500px 0; }
     }
 
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      color: #ffffff;
       text-align: center;
       background: linear-gradient(270deg, #00ffa3, #dc1fff, #00d9ff);
       background-size: 600% 600%;
       animation: gradientBackground 15s ease infinite;
+      color: #fff;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-top: 40px;
-      color: #ffffff;
-      text-shadow: 0 0 15px #00ffa3;
-      animation: glow 2s infinite alternate;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(120deg, #eee, #ccc, #eee);
+      background-size: 200% auto;
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
     }
 
     .container {
@@ -50,7 +62,7 @@
       padding: 20px;
       border-radius: 12px;
       width: 90%;
-      max-width: 420px;
+      max-width: 440px;
       backdrop-filter: blur(6px);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -67,9 +79,9 @@
 
     footer {
       margin: 50px 20px 30px;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       color: #ffffff;
-      line-height: 1.6;
+      line-height: 1.8;
     }
 
     a {
@@ -88,15 +100,6 @@
       margin-right: 6px;
     }
 
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 8px #00ffa3;
-      }
-      to {
-        text-shadow: 0 0 20px #00ffa3, 0 0 30px #00ffd5;
-      }
-    }
-
     code {
       background: rgba(255, 255, 255, 0.08);
       padding: 3px 6px;
@@ -105,6 +108,38 @@
       margin-top: 8px;
       font-family: monospace;
       font-size: 0.95rem;
+    }
+
+    .copy-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .copy-btn {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      border: none;
+      background-color: #00ffa3;
+      color: #000;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background-color: #00d1a3;
+    }
+
+    .highlighted-text {
+      font-size: 1.15rem;
+      margin-top: 15px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
     }
   </style>
 </head>
@@ -125,8 +160,11 @@
     <div class="box">
       <span class="emoji">💸</span><strong>Accepted Payments</strong><br><br>
       <img src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=029" alt="Tether" class="tether-logo">
-      USDT on Solana<br>
-      <code>N8UivXNHnDyRhQqH4NZduKKva4LSYDQam4PfGixctXC</code>
+      USDT on Solana
+      <div class="copy-container">
+        <code id="walletAddress">N8UivXNHnDyRhQqH4NZduKKva4LSYDQam4PfGixctXC</code>
+        <button class="copy-btn" onclick="copyAddress()">Copy</button>
+      </div>
     </div>
 
     <div class="box">
@@ -138,7 +176,19 @@
 
   <footer>
     <strong>IMPORTANT:</strong> Make sure offline mode on Steam is enabled before starting the game.<br><br>
-    After sending USDT to SOL address, send the transaction hash and the product you want to buy on Telegram <strong>@ms4nc</strong>, you will receive a Steam login and password and a Steam Guard code.
+    <div class="highlighted-text">
+      After sending USDT to SOL address, send the transaction hash and the product you want to buy on Telegram
+      <strong>@ms4nc</strong>, you will receive a Steam login and password and a Steam Guard code.
+    </div>
   </footer>
+
+  <script>
+    function copyAddress() {
+      const address = document.getElementById("walletAddress").textContent;
+      navigator.clipboard.writeText(address).then(() => {
+        alert("Address copied to clipboard!");
+      });
+    }
+  </script>
 </body>
 </html>
